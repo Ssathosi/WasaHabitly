@@ -10,16 +10,31 @@ export default function PomodoroPage() {
     { id: 2, title: "Review Kode Frontend", completed: true },
     { id: 3, title: "Meeting dengan Tim", completed: false },
   ]);
+  
+  const [focusDuration, setFocusDuration] = useState(25);
+  const [shortDuration, setShortDuration] = useState(5);
+  const [longDuration, setLongDuration] = useState(15);
 
   const toggleTask = (id: number) => {
     setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
+  };
+
+  const handleSettingsChange = (focus: number, short: number, long: number) => {
+    setFocusDuration(focus);
+    setShortDuration(short);
+    setLongDuration(long);
   };
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="flex flex-col md:flex-row gap-8 items-start">
         <div className="w-full md:w-1/2">
-          <PomodoroTimer />
+          <PomodoroTimer 
+            focusDuration={focusDuration}
+            shortDuration={shortDuration}
+            longDuration={longDuration}
+            onSettingsChange={handleSettingsChange}
+          />
         </div>
 
         <div className="w-full md:w-1/2 space-y-4">
