@@ -74,31 +74,31 @@ export function LandingHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium backdrop-blur-sm">
+          <div className="inline-block mb-3 sm:mb-4 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs sm:text-sm font-medium backdrop-blur-sm">
             🚀 Versi Beta 2.0 Kini Tersedia
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 leading-tight">
             Bangun Kebiasaan <br />
             <span className="text-accent">Terbaikmu</span> Hari Ini
           </h1>
           
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed px-2">
             WasaHabitly membantu Anda melacak progres, membangun disiplin, dan mencapai tujuan hidup dengan analitik mendalam dan antarmuka yang indah.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <Button 
-              size="lg" 
-              className="text-lg px-8 py-6 rounded-full bg-accent hover:bg-accent/90 text-white shadow-[0_0_20px_-5px_rgba(26,188,156,0.5)] transition-all hover:scale-105 cursor-pointer"
+              size="sm"
+              className="sm:size-lg w-full sm:w-auto text-sm sm:text-lg px-5 sm:px-8 py-4 sm:py-6 rounded-full bg-accent hover:bg-accent/90 text-white shadow-[0_0_20px_-5px_rgba(26,188,156,0.5)] transition-all hover:scale-105 cursor-pointer"
               onClick={() => setLocation("/dashboard")}
             >
-              Mulai Sekarang <ArrowRight className="ml-2 h-5 w-5" />
+              Mulai Sekarang <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
             <Button 
               variant="outline" 
-              size="lg" 
-              className="text-lg px-8 py-6 rounded-full border-white/10 bg-white/5 hover:bg-white/10 text-foreground backdrop-blur-sm cursor-pointer"
+              size="sm"
+              className="sm:size-lg w-full sm:w-auto text-sm sm:text-lg px-5 sm:px-8 py-4 sm:py-6 rounded-full border-white/10 bg-white/5 hover:bg-white/10 text-foreground backdrop-blur-sm cursor-pointer"
             >
               Pelajari Lebih Lanjut
             </Button>

@@ -34,19 +34,20 @@ export default function Landing() {
     <div className="min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden">
       {/* Navbar */}
       <header className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-white/5">
-        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2 font-bold text-xl">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-teal-600 flex items-center justify-center text-white">W</div>
-            WasaHabitly
+        <div className="container mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2 font-bold text-lg sm:text-xl">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-accent to-teal-600 flex items-center justify-center text-white text-sm sm:text-base">W</div>
+            <span className="hidden xs:inline">WasaHabitly</span>
+            <span className="inline xs:hidden">Wasa</span>
           </div>
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8">
             <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Fitur</a>
             <a href="#testimonials" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Testimoni</a>
             <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Harga</a>
           </nav>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" className="hidden sm:flex" onClick={() => setLocation("/login")}>Masuk</Button>
-            <Button onClick={() => setLocation("/dashboard")} className="bg-white/10 hover:bg-white/20 text-white border border-white/10">Daftar</Button>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Button variant="ghost" className="hidden sm:flex text-xs sm:text-sm" onClick={() => setLocation("/login")}>Masuk</Button>
+            <Button onClick={() => setLocation("/dashboard")} className="bg-white/10 hover:bg-white/20 text-white border border-white/10 text-xs sm:text-sm px-3 sm:px-4">Daftar</Button>
           </div>
         </div>
       </header>
@@ -55,16 +56,16 @@ export default function Landing() {
         <LandingHero />
 
         {/* Features Section */}
-        <section id="features" className="py-24 relative bg-black/20">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Fitur Yang Membantumu Bertumbuh</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+        <section id="features" className="py-12 sm:py-20 md:py-24 relative bg-black/20">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center mb-10 sm:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">Fitur Yang Membantumu Bertumbuh</h2>
+              <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
                 Semua alat yang kamu butuhkan untuk membangun kebiasaan baik dan menghilangkan yang buruk.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {features.map((feature, idx) => (
                 <motion.div
                   key={idx}
@@ -72,13 +73,13 @@ export default function Landing() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="p-6 rounded-2xl bg-card/30 border border-white/5 hover:bg-card/50 transition-colors"
+                  className="p-4 sm:p-6 rounded-2xl bg-card/30 border border-white/5 hover:bg-card/50 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-4 border border-white/10">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 flex items-center justify-center mb-3 sm:mb-4 border border-white/10">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
                 </motion.div>
@@ -88,8 +89,8 @@ export default function Landing() {
         </section>
 
         {/* Footer */}
-        <footer className="py-12 border-t border-white/5 bg-background">
-          <div className="container mx-auto px-6 text-center text-muted-foreground">
+        <footer className="py-8 sm:py-12 border-t border-white/5 bg-background">
+          <div className="container mx-auto px-4 sm:px-6 text-center text-xs sm:text-sm text-muted-foreground">
             <p>&copy; 2025 WasaHabitly. Dibuat dengan ❤️ di Indonesia.</p>
           </div>
         </footer>
