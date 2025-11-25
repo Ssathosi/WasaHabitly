@@ -1,4 +1,5 @@
 import { PomodoroTimer } from "@/components/PomodoroTimer";
+import { AddTaskModal } from "@/components/AddTaskModal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,7 @@ export default function PomodoroPage() {
   const [focusDuration, setFocusDuration] = useState(25);
   const [shortDuration, setShortDuration] = useState(5);
   const [longDuration, setLongDuration] = useState(15);
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   const toggleTask = (id: number) => {
     setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
@@ -23,6 +25,15 @@ export default function PomodoroPage() {
     setFocusDuration(focus);
     setShortDuration(short);
     setLongDuration(long);
+  };
+
+  const handleAddTask = (newTask: { title: string }) => {
+    const task = {
+      id: Math.max(...tasks.map(t => t.id), 0) + 1,
+      title: newTask.title,
+      completed: false,
+    };
+    setTasks([...tasks, task]);
   };
 
   return (
@@ -59,9 +70,14 @@ export default function PomodoroPage() {
             </div>
           ))}
           
-          <div className="p-4 rounded-xl border border-dashed border-white/10 text-center text-muted-foreground hover:text-foreground hover:border-white/20 cursor-pointer transition-colors">
+          <div 
+            onClick={() => setIsTaskModalOpen(true)}
+            className="p-4 rounded-xl border border-dashed border-white/10 text-center text-muted-foreground hover:text-foreground hover:border-white/20 cursor-pointer transition-colors"
+          >
             + Tambah Tugas Baru
           </div>
+
+          <AddTaskModal open={isTaskModalOpen} onOpenChange={setIsTaskModalOpen} onAdd={handleAddTask} />
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { DetailAchievementModal } from "@/components/DetailAchievementModal";
 import { Trophy, Zap, Star, Heart, Flame, Award, Gift } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -32,6 +33,8 @@ export default function RewardsPage() {
   const [points, setPoints] = useState(1250);
   const [redeemedRewards, setRedeemedRewards] = useState<number[]>([1]);
   const [achievements, setAchievements] = useState(ACHIEVEMENTS);
+  const [selectedAchievement, setSelectedAchievement] = useState<typeof ACHIEVEMENTS[0] | null>(null);
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   const handleRedeemReward = (rewardId: number, rewardPoints: number) => {
     if (points >= rewardPoints && !redeemedRewards.includes(rewardId)) {
@@ -93,8 +96,12 @@ export default function RewardsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
+              onClick={() => {
+                setSelectedAchievement(achievement);
+                setIsDetailOpen(true);
+              }}
             >
-              <Card className={`backdrop-blur-sm transition-all ${achievement.unlocked ? "bg-card/40 border-white/10" : "bg-card/20 border-white/5 opacity-60"}`}>
+              <Card className={`backdrop-blur-sm transition-all cursor-pointer hover:border-white/20 ${achievement.unlocked ? "bg-card/40 border-white/10" : "bg-card/20 border-white/5 opacity-60"}`}>
                 <CardContent className="pt-6">
                   <div className="flex items-start justify-between mb-3">
                     <div className={`p-3 rounded-xl ${achievement.unlocked ? "bg-white/10" : "bg-white/5"}`}>
@@ -115,6 +122,8 @@ export default function RewardsPage() {
             </motion.div>
           ))}
         </div>
+
+        <DetailAchievementModal open={isDetailOpen} onOpenChange={setIsDetailOpen} achievement={selectedAchievement} />
       </div>
 
       {/* Rewards Section */}

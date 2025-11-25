@@ -1,4 +1,5 @@
 import { HabitCard } from "@/components/HabitCard";
+import { AddHabitModal } from "@/components/AddHabitModal";
 import { Button } from "@/components/ui/button";
 import { Plus, BookOpen, Droplets, Dumbbell, Moon, Sun } from "lucide-react";
 import { useState } from "react";
@@ -14,9 +15,23 @@ const MOCK_HABITS = [
 
 export default function HabitsPage() {
   const [habits, setHabits] = useState(MOCK_HABITS);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleHabit = (id: number) => {
     setHabits(habits.map(h => h.id === id ? { ...h, completed: !h.completed, streak: h.completed ? h.streak : h.streak + 1 } : h));
+  };
+
+  const handleAddHabit = (newHabit: { title: string; description: string; category: string }) => {
+    const habit = {
+      id: Math.max(...habits.map(h => h.id), 0) + 1,
+      title: newHabit.title,
+      description: newHabit.description,
+      streak: 0,
+      completed: false,
+      icon: <Plus className="h-5 w-5" />,
+      color: "bg-teal-500",
+    };
+    setHabits([habit, ...habits]);
   };
 
   return (
@@ -26,10 +41,12 @@ export default function HabitsPage() {
           <h2 className="text-2xl font-bold mb-1">Hari Ini</h2>
           <p className="text-muted-foreground text-sm">Selasa, 25 November 2025</p>
         </div>
-        <Button className="bg-accent hover:bg-accent/90 text-white shadow-lg shadow-accent/20">
+        <Button onClick={() => setIsModalOpen(true)} className="bg-accent hover:bg-accent/90 text-white shadow-lg shadow-accent/20">
           <Plus className="h-4 w-4 mr-2" /> Tambah Habit
         </Button>
       </div>
+
+      <AddHabitModal open={isModalOpen} onOpenChange={setIsModalOpen} onAdd={handleAddHabit} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {habits.map((habit, idx) => (
