@@ -4,6 +4,7 @@ import HabitsPage from "./HabitsPage";
 import AnalyticsPage from "./AnalyticsPage";
 import PomodoroPage from "./PomodoroPage";
 import SocialPage from "./SocialPage";
+import CalendarPage from "./CalendarPage";
 import { Button } from "@/components/ui/button";
 import { Menu, Bell } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -58,9 +59,7 @@ export default function Dashboard() {
                   <Route path="/dashboard/analytics" component={AnalyticsPage} />
                   <Route path="/dashboard/pomodoro" component={PomodoroPage} />
                   <Route path="/dashboard/social" component={SocialPage} />
-                  <Route path="/dashboard/calendar">
-                    <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Kalender (Coming Soon)</div>
-                  </Route>
+                  <Route path="/dashboard/calendar" component={CalendarPage} />
                   <Route path="/dashboard/rewards">
                     <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Rewards (Coming Soon)</div>
                   </Route>
