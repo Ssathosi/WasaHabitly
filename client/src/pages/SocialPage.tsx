@@ -249,7 +249,7 @@ export default function SocialPage() {
                     <p className="text-xs text-muted-foreground">{friend.mutuals} mutual friends</p>
                   </div>
                 </div>
-                <Button size="xs" variant="outline" className="h-7 px-2 text-xs border-white/10 hover:bg-white/10">
+                <Button size="sm" variant="outline" className="h-7 px-2 text-xs border-white/10 hover:bg-white/10">
                   Add
                 </Button>
               </div>
