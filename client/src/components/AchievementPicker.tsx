@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Flame, Star, Heart, Award } from "lucide-react";
+import { Trophy, Flame, Star, Heart, Award, Rocket, Shield, Crown, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface Achievement {
@@ -19,10 +19,13 @@ interface AchievementPickerProps {
 const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
   { id: 1, title: "First Step", icon: <Trophy className="h-5 w-5" />, color: "text-yellow-400" },
   { id: 2, title: "Week Warrior", icon: <Flame className="h-5 w-5" />, color: "text-orange-400" },
-  { id: 3, title: "Habit Master", icon: <Trophy className="h-5 w-5" />, color: "text-purple-400" },
+  { id: 3, title: "Habit Master", icon: <Crown className="h-5 w-5" />, color: "text-purple-400" },
   { id: 4, title: "Perfect Week", icon: <Star className="h-5 w-5" />, color: "text-blue-400" },
   { id: 5, title: "Social Butterfly", icon: <Heart className="h-5 w-5" />, color: "text-pink-400" },
   { id: 6, title: "Consistent Legend", icon: <Award className="h-5 w-5" />, color: "text-red-400" },
+  { id: 7, title: "Rocket Start", icon: <Rocket className="h-5 w-5" />, color: "text-cyan-400" },
+  { id: 8, title: "Iron Shield", icon: <Shield className="h-5 w-5" />, color: "text-slate-400" },
+  { id: 9, title: "Superstar", icon: <Sparkles className="h-5 w-5" />, color: "text-amber-300" },
 ];
 
 export function AchievementPicker({ open, onOpenChange, onSelect }: AchievementPickerProps) {
