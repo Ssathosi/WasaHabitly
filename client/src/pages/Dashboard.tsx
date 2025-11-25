@@ -1,4 +1,5 @@
 import { DashboardSidebar } from "@/components/DashboardSidebar";
+import { MobileSidebar } from "@/components/MobileSidebar";
 import { Route, Switch, useLocation } from "wouter";
 import HabitsPage from "./HabitsPage";
 import AnalyticsPage from "./AnalyticsPage";
@@ -9,9 +10,11 @@ import RewardsPage from "./RewardsPage";
 import { Button } from "@/components/ui/button";
 import { Menu, Bell } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useState } from "react";
 
 export default function Dashboard() {
   const [location] = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const getTitle = () => {
     if (location.includes("analytics")) return "Analytics";
@@ -27,8 +30,8 @@ export default function Dashboard() {
       {/* Sidebar for Desktop */}
       <DashboardSidebar />
 
-      {/* Mobile Sidebar */}
-      <Sheet>
+      {/* Mobile Sidebar + Main Content */}
+      <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
         <div className="flex-1 flex flex-col h-full min-w-0 overflow-hidden">
           {/* Topbar */}
           <header className="h-16 border-b border-white/5 flex items-center justify-between px-6 bg-background/50 backdrop-blur-md z-10">
@@ -38,8 +41,8 @@ export default function Dashboard() {
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="p-0 w-64 bg-sidebar border-r border-white/10">
-                <DashboardSidebar />
+              <SheetContent side="left" className="p-0 border-r border-white/10">
+                <MobileSidebar onNavigate={() => setIsMobileMenuOpen(false)} />
               </SheetContent>
               
               <h1 className="text-xl font-semibold tracking-tight">{getTitle()}</h1>
