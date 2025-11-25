@@ -57,6 +57,7 @@ export default function HabitsPage() {
             transition={{ delay: idx * 0.05 }}
           >
             <HabitCard
+              id={habit.id}
               title={habit.title}
               description={habit.description}
               streak={habit.streak}
@@ -64,6 +65,12 @@ export default function HabitsPage() {
               color={habit.color}
               icon={habit.icon}
               onComplete={() => toggleHabit(habit.id)}
+              onEdit={(updatedHabit) => {
+                setHabits(habits.map(h => h.id === updatedHabit.id ? { ...h, title: updatedHabit.title, description: updatedHabit.description } : h));
+              }}
+              onDelete={(id) => {
+                setHabits(habits.filter(h => h.id !== id));
+              }}
             />
           </motion.div>
         ))}
