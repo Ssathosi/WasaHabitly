@@ -3,6 +3,7 @@ import { Route, Switch, useLocation } from "wouter";
 import HabitsPage from "./HabitsPage";
 import AnalyticsPage from "./AnalyticsPage";
 import PomodoroPage from "./PomodoroPage";
+import SocialPage from "./SocialPage";
 import { Button } from "@/components/ui/button";
 import { Menu, Bell } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -14,6 +15,7 @@ export default function Dashboard() {
     if (location.includes("analytics")) return "Analytics";
     if (location.includes("calendar")) return "Kalender";
     if (location.includes("pomodoro")) return "Pomodoro Focus";
+    if (location.includes("social")) return "Komunitas";
     return "Habits Saya";
   };
 
@@ -55,11 +57,9 @@ export default function Dashboard() {
                   <Route path="/dashboard" component={HabitsPage} />
                   <Route path="/dashboard/analytics" component={AnalyticsPage} />
                   <Route path="/dashboard/pomodoro" component={PomodoroPage} />
+                  <Route path="/dashboard/social" component={SocialPage} />
                   <Route path="/dashboard/calendar">
                     <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Kalender (Coming Soon)</div>
-                  </Route>
-                  <Route path="/dashboard/social">
-                    <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Sosial (Coming Soon)</div>
                   </Route>
                   <Route path="/dashboard/rewards">
                     <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Rewards (Coming Soon)</div>
