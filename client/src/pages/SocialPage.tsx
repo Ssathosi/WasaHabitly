@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { CommentSection } from "@/components/CommentSection";
+import { AchievementPicker } from "@/components/AchievementPicker";
 import { Heart, MessageCircle, Share2, Trophy, Users, MoreHorizontal, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -57,6 +58,8 @@ export default function SocialPage() {
   const [posts, setPosts] = useState(MOCK_POSTS);
   const [newPost, setNewPost] = useState("");
   const [expandedPost, setExpandedPost] = useState<number | null>(null);
+  const [isAchievementPickerOpen, setIsAchievementPickerOpen] = useState(false);
+  const [selectedAchievement, setSelectedAchievement] = useState<any>(null);
 
   const handlePost = () => {
     if (!newPost.trim()) return;
@@ -68,12 +71,13 @@ export default function SocialPage() {
       timestamp: "Baru saja",
       likes: 0,
       comments: 0,
-      achievement: null,
+      achievement: selectedAchievement ? { title: selectedAchievement.title, icon: selectedAchievement.icon } : null,
       commentsList: []
     };
     
     setPosts([post, ...posts]);
     setNewPost("");
+    setSelectedAchievement(null);
   };
 
   const handleLike = (id: number) => {
@@ -126,7 +130,12 @@ export default function SocialPage() {
                 />
                 <div className="flex justify-between items-center">
                   <div className="flex gap-2 text-muted-foreground">
-                    <Button variant="ghost" size="icon" className="h-8 w-8 hover:text-accent hover:bg-accent/10">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className={cn("h-8 w-8", selectedAchievement ? "text-accent bg-accent/10" : "hover:text-accent hover:bg-accent/10")}
+                      onClick={() => setIsAchievementPickerOpen(true)}
+                    >
                       <Trophy className="h-4 w-4" />
                     </Button>
                   </div>
@@ -227,6 +236,12 @@ export default function SocialPage() {
           ))}
         </div>
       </div>
+
+      <AchievementPicker 
+        open={isAchievementPickerOpen} 
+        onOpenChange={setIsAchievementPickerOpen}
+        onSelect={setSelectedAchievement}
+      />
 
       {/* Sidebar */}
       <div className="space-y-6 hidden lg:block">
