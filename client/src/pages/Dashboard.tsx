@@ -5,6 +5,7 @@ import AnalyticsPage from "./AnalyticsPage";
 import PomodoroPage from "./PomodoroPage";
 import SocialPage from "./SocialPage";
 import CalendarPage from "./CalendarPage";
+import RewardsPage from "./RewardsPage";
 import { Button } from "@/components/ui/button";
 import { Menu, Bell } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -17,6 +18,7 @@ export default function Dashboard() {
     if (location.includes("calendar")) return "Kalender";
     if (location.includes("pomodoro")) return "Pomodoro Focus";
     if (location.includes("social")) return "Komunitas";
+    if (location.includes("rewards")) return "Rewards & Achievements";
     return "Habits Saya";
   };
 
@@ -60,9 +62,7 @@ export default function Dashboard() {
                   <Route path="/dashboard/pomodoro" component={PomodoroPage} />
                   <Route path="/dashboard/social" component={SocialPage} />
                   <Route path="/dashboard/calendar" component={CalendarPage} />
-                  <Route path="/dashboard/rewards">
-                    <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Rewards (Coming Soon)</div>
-                  </Route>
+                  <Route path="/dashboard/rewards" component={RewardsPage} />
                   
                   {/* Fallback for unknown dashboard routes */}
                   <Route>
