@@ -1,5 +1,6 @@
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { MobileSidebar } from "@/components/MobileSidebar";
+import { NotificationModal } from "@/components/NotificationModal";
 import { Route, Switch, useLocation } from "wouter";
 import HabitsPage from "./HabitsPage";
 import AnalyticsPage from "./AnalyticsPage";
@@ -15,6 +16,42 @@ import { useState } from "react";
 export default function Dashboard() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      type: "achievement" as const,
+      title: "🏆 Achievement Unlocked!",
+      message: "Selamat! Kamu telah mencapai 7 hari streak. Lanjutkan semangat ini!",
+      timestamp: "5 menit yang lalu",
+      read: false,
+    },
+    {
+      id: 2,
+      type: "success" as const,
+      title: "✓ Habit Selesai",
+      message: "Kamu telah menyelesaikan habit 'Olahraga Pagi' hari ini.",
+      timestamp: "1 jam yang lalu",
+      read: false,
+    },
+    {
+      id: 3,
+      type: "info" as const,
+      title: "💡 Reminder",
+      message: "Jangan lupa menyelesaikan habit 'Membaca Buku' hari ini!",
+      timestamp: "3 jam yang lalu",
+      read: true,
+    },
+    {
+      id: 4,
+      type: "success" as const,
+      title: "✓ Weekly Goal",
+      message: "Kamu telah mencapai 65% target mingguan. Penuh semangat!",
+      timestamp: "1 hari yang lalu",
+      read: true,
+    },
+  ]);
+  const unreadCount = notifications.filter(n => !n.read).length;
 
   const getTitle = () => {
     if (location.includes("analytics")) return "Analytics";
@@ -49,9 +86,18 @@ export default function Dashboard() {
             </div>
             
             <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground relative">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="text-muted-foreground hover:text-foreground relative"
+                onClick={() => setIsNotificationOpen(true)}
+              >
                 <Bell className="h-5 w-5" />
-                <span className="absolute top-3 right-3 w-2 h-2 bg-accent rounded-full border border-background" />
+                {unreadCount > 0 && (
+                  <span className="absolute top-2 right-2 w-5 h-5 bg-accent rounded-full flex items-center justify-center text-white text-xs font-bold">
+                    {unreadCount}
+                  </span>
+                )}
               </Button>
             </div>
           </header>
@@ -79,6 +125,19 @@ export default function Dashboard() {
           </main>
         </div>
       </Sheet>
+
+      <NotificationModal
+        open={isNotificationOpen}
+        onOpenChange={setIsNotificationOpen}
+        notifications={notifications}
+        unreadCount={unreadCount}
+        onMarkAsRead={(id) => {
+          setNotifications(notifications.map(n => n.id === id ? { ...n, read: true } : n));
+        }}
+        onMarkAllAsRead={() => {
+          setNotifications(notifications.map(n => ({ ...n, read: true })));
+        }}
+      />
     </div>
   );
 }
