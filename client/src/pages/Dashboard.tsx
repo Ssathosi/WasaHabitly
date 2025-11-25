@@ -1,8 +1,8 @@
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { Route, Switch, useLocation } from "wouter";
-import HabitsPage from "./HabitsPage";
-import AnalyticsPage from "./AnalyticsPage";
-import PomodoroPage from "./PomodoroPage";
+import HabitsPage from "./HabitsPage.tsx";
+import AnalyticsPage from "./AnalyticsPage.tsx";
+import PomodoroPage from "./PomodoroPage.tsx";
 import { Button } from "@/components/ui/button";
 import { Menu, Bell } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -64,6 +64,10 @@ export default function Dashboard() {
                   </Route>
                   <Route path="/dashboard/rewards">
                     <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Rewards (Coming Soon)</div>
+                  </Route>
+                  {/* Fallback for /dashboard/* that doesn't match above */}
+                  <Route>
+                    <div className="flex items-center justify-center h-64 text-muted-foreground">Halaman tidak ditemukan</div>
                   </Route>
                 </Switch>
              </div>
