@@ -34,10 +34,6 @@ export function DashboardSidebar() {
           <span className="font-bold text-lg tracking-tight">WasaHabitly</span>
         </div>
 
-        <Button className="w-full justify-start gap-2 bg-white/5 hover:bg-white/10 text-foreground border border-white/5 mb-6">
-          <Plus className="h-4 w-4" /> Habit Baru
-        </Button>
-
         <nav className="space-y-1">
           {NAV_ITEMS.map((item) => {
             const isActive = location === item.href;
