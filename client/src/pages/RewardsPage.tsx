@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const ACHIEVEMENTS = [
   { id: 1, name: "First Step", description: "Selesaikan 1 hari pertama", icon: <Trophy className="h-6 w-6" />, color: "text-yellow-400", unlocked: true },
   { id: 2, name: "Week Warrior", description: "Mencapai 7 hari streak", icon: <Flame className="h-6 w-6" />, color: "text-orange-400", unlocked: true },
-  { id: 3, name: "Habit Master", description: "Mencapai 30 hari streak", icon: <Crown className="h-6 w-6" />, color: "text-purple-400", unlocked: false },
+  { id: 3, name: "Habit Master", description: "Mencapai 30 hari streak", icon: <Trophy className="h-6 w-6" />, color: "text-purple-400", unlocked: false },
   { id: 4, name: "Perfect Week", description: "Selesaikan semua habit dalam 1 minggu", icon: <Star className="h-6 w-6" />, color: "text-blue-400", unlocked: true },
   { id: 5, name: "Social Butterfly", description: "Berinteraksi dengan 5 teman", icon: <Heart className="h-6 w-6" />, color: "text-pink-400", unlocked: false },
   { id: 6, name: "Consistent Legend", description: "Mencapai 100 hari streak", icon: <Award className="h-6 w-6" />, color: "text-red-400", unlocked: false },
@@ -24,10 +24,6 @@ const REWARDS = [
   { id: 5, name: "Custom Goal", points: 300, icon: "🎯", description: "Buat goal custom" },
   { id: 6, name: "Weekly Report", points: 200, icon: "📊", description: "Laporan mingguan detail" },
 ];
-
-function Crown({ className }: { className?: string }) {
-  return <Award className={className} />;
-}
 
 export default function RewardsPage() {
   const [points, setPoints] = useState(1250);

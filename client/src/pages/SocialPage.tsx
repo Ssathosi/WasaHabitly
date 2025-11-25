@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { CommentSection } from "@/components/CommentSection";
 import { Heart, MessageCircle, Share2, Trophy, Users, MoreHorizontal, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -16,7 +17,11 @@ const MOCK_POSTS = [
     timestamp: "2 jam yang lalu",
     likes: 24,
     comments: 5,
-    achievement: { title: "30 Day Streak", icon: <Trophy className="h-4 w-4 text-yellow-500" /> }
+    achievement: { title: "30 Day Streak", icon: <Trophy className="h-4 w-4 text-yellow-500" /> },
+    commentsList: [
+      { id: 1, author: "Siti Rahma", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Siti", content: "Keren banget Budi! Terus semangat! 💪", timestamp: "1 jam lalu", likes: 3, liked: false },
+      { id: 2, author: "Dimas Anggara", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Dimas", content: "Inspiratif! Kapan giliran aku mencapai 30 hari?", timestamp: "45 menit lalu", likes: 1, liked: false },
+    ]
   },
   {
     id: 2,
@@ -25,7 +30,10 @@ const MOCK_POSTS = [
     timestamp: "4 jam yang lalu",
     likes: 42,
     comments: 12,
-    achievement: null
+    achievement: null,
+    commentsList: [
+      { id: 3, author: "Budi Santoso", avatar: "https://github.com/shadcn.png", content: "Buku yang sama yang aku baca! Rekomendasi bagus.", timestamp: "3 jam lalu", likes: 5, liked: false }
+    ]
   },
   {
     id: 3,
@@ -34,7 +42,8 @@ const MOCK_POSTS = [
     timestamp: "6 jam yang lalu",
     likes: 15,
     comments: 2,
-    achievement: { title: "Focus Master", icon: <Trophy className="h-4 w-4 text-purple-500" /> }
+    achievement: { title: "Focus Master", icon: <Trophy className="h-4 w-4 text-purple-500" /> },
+    commentsList: []
   }
 ];
 
@@ -47,6 +56,7 @@ const SUGGESTED_FRIENDS = [
 export default function SocialPage() {
   const [posts, setPosts] = useState(MOCK_POSTS);
   const [newPost, setNewPost] = useState("");
+  const [expandedPost, setExpandedPost] = useState<number | null>(null);
 
   const handlePost = () => {
     if (!newPost.trim()) return;
@@ -58,7 +68,8 @@ export default function SocialPage() {
       timestamp: "Baru saja",
       likes: 0,
       comments: 0,
-      achievement: null
+      achievement: null,
+      commentsList: []
     };
     
     setPosts([post, ...posts]);
@@ -67,6 +78,30 @@ export default function SocialPage() {
 
   const handleLike = (id: number) => {
     setPosts(posts.map(p => p.id === id ? { ...p, likes: p.likes + 1 } : p));
+  };
+
+  const handleAddComment = (postId: number, content: string) => {
+    setPosts(posts.map(p => {
+      if (p.id === postId) {
+        return {
+          ...p,
+          comments: p.comments + 1,
+          commentsList: [
+            ...p.commentsList,
+            {
+              id: Date.now(),
+              author: "Anda",
+              avatar: "https://github.com/shadcn.png",
+              content,
+              timestamp: "Baru saja",
+              likes: 0,
+              liked: false
+            }
+          ]
+        };
+      }
+      return p;
+    }));
   };
 
   return (
@@ -157,7 +192,12 @@ export default function SocialPage() {
                       <Heart className={cn("h-4 w-4", post.likes > 0 && "fill-current")} /> 
                       {post.likes}
                     </Button>
-                    <Button variant="ghost" size="sm" className="hover:text-blue-400 hover:bg-blue-500/10 gap-2">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="hover:text-blue-400 hover:bg-blue-500/10 gap-2"
+                      onClick={() => setExpandedPost(expandedPost === post.id ? null : post.id)}
+                    >
                       <MessageCircle className="h-4 w-4" /> 
                       {post.comments}
                     </Button>
@@ -166,6 +206,21 @@ export default function SocialPage() {
                       Share
                     </Button>
                   </div>
+
+                  {expandedPost === post.id && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="mt-4 pt-4 border-t border-white/5"
+                    >
+                      <CommentSection 
+                        postId={post.id} 
+                        comments={post.commentsList} 
+                        onAddComment={(content) => handleAddComment(post.id, content)}
+                      />
+                    </motion.div>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>
