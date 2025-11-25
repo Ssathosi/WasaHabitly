@@ -1,12 +1,11 @@
 import { DashboardSidebar } from "@/components/DashboardSidebar";
-import { Route, Switch, useLocation } from "wouter";
+import { Route, Switch, useLocation, Router } from "wouter";
 import HabitsPage from "./HabitsPage";
 import AnalyticsPage from "./AnalyticsPage";
 import PomodoroPage from "./PomodoroPage";
 import { Button } from "@/components/ui/button";
 import { Menu, Bell } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useState } from "react";
 
 export default function Dashboard() {
   const [location] = useLocation();
@@ -52,24 +51,31 @@ export default function Dashboard() {
           {/* Main Content */}
           <main className="flex-1 overflow-auto p-6 scroll-smooth">
              <div className="max-w-6xl mx-auto">
-                <Switch>
-                  <Route path="/dashboard" component={HabitsPage} />
-                  <Route path="/dashboard/analytics" component={AnalyticsPage} />
-                  <Route path="/dashboard/pomodoro" component={PomodoroPage} />
-                  <Route path="/dashboard/calendar">
-                    <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Kalender (Coming Soon)</div>
-                  </Route>
-                  <Route path="/dashboard/social">
-                    <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Sosial (Coming Soon)</div>
-                  </Route>
-                  <Route path="/dashboard/rewards">
-                    <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Rewards (Coming Soon)</div>
-                  </Route>
-                  {/* Fallback for /dashboard/* that doesn't match above */}
-                  <Route>
-                    <div className="flex items-center justify-center h-64 text-muted-foreground">Halaman tidak ditemukan</div>
-                  </Route>
-                </Switch>
+                {/* Nested Router for Dashboard paths */}
+                <Router base="/dashboard">
+                  <Switch>
+                    <Route path="/" component={HabitsPage} />
+                    <Route path="/analytics" component={AnalyticsPage} />
+                    <Route path="/pomodoro" component={PomodoroPage} />
+                    <Route path="/calendar">
+                      <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Kalender (Coming Soon)</div>
+                    </Route>
+                    <Route path="/social">
+                      <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Sosial (Coming Soon)</div>
+                    </Route>
+                    <Route path="/rewards">
+                      <div className="flex items-center justify-center h-64 text-muted-foreground">Fitur Rewards (Coming Soon)</div>
+                    </Route>
+                    
+                    {/* Fallback for unknown dashboard routes */}
+                    <Route>
+                      <div className="flex flex-col items-center justify-center h-64 text-muted-foreground">
+                        <p className="mb-4">Halaman tidak ditemukan</p>
+                        <Button variant="outline" onClick={() => window.location.href = '/dashboard'}>Kembali ke Dashboard</Button>
+                      </div>
+                    </Route>
+                  </Switch>
+                </Router>
              </div>
           </main>
         </div>
