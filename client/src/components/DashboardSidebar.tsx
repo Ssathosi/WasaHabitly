@@ -61,8 +61,8 @@ export function DashboardSidebar() {
             <AvatarFallback>AD</AvatarFallback>
           </Avatar>
           <div className="flex-1 overflow-hidden">
-            <p className="text-sm font-medium truncate">Adi Nugroho</p>
-            <p className="text-xs text-muted-foreground truncate">adi@example.com</p>
+            <p className="text-sm font-medium truncate">Walid Sathosi Sirait</p>
+            <p className="text-xs text-muted-foreground truncate">wasasi@example.com</p>
           </div>
         </div>
         <div className="flex gap-1">
