@@ -109,9 +109,9 @@ export default function SocialPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8 max-w-5xl lg:mx-auto px-0 lg:px-4">
       {/* Main Feed */}
-      <div className="lg:col-span-2 space-y-6">
+      <div className="lg:col-span-2 space-y-6 px-4 lg:px-0">
         {/* Create Post */}
         <Card className="bg-card/30 border-white/5 backdrop-blur-sm">
           <CardContent className="pt-6">
@@ -244,7 +244,7 @@ export default function SocialPage() {
       />
 
       {/* Sidebar */}
-      <div className="space-y-6 hidden lg:block">
+      <div className="space-y-6 hidden lg:block px-4 lg:px-0">
         <Card className="bg-card/30 border-white/5 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
