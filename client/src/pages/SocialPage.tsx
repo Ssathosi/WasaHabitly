@@ -114,33 +114,33 @@ export default function SocialPage() {
       <div className="lg:col-span-2 space-y-6 px-4 lg:px-0">
         {/* Create Post */}
         <Card className="bg-card/30 border-white/5 backdrop-blur-sm">
-          <CardContent className="pt-6">
-            <div className="flex gap-4">
-              <Avatar>
+          <CardContent className="p-3 sm:p-6 pt-3 sm:pt-6">
+            <div className="flex gap-2 sm:gap-4">
+              <Avatar className="h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0">
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>ME</AvatarFallback>
               </Avatar>
-              <div className="flex-1 space-y-4">
+              <div className="flex-1 space-y-2 sm:space-y-4">
                 <Input 
-                  placeholder="Bagikan progres atau pencapaianmu hari ini..." 
-                  className="bg-white/5 border-white/10 focus-visible:ring-accent"
+                  placeholder="Bagikan progres..." 
+                  className="bg-white/5 border-white/10 focus-visible:ring-accent text-xs sm:text-sm h-8 sm:h-10"
                   value={newPost}
                   onChange={(e) => setNewPost(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handlePost()}
                 />
-                <div className="flex justify-between items-center">
-                  <div className="flex gap-2 text-muted-foreground">
+                <div className="flex justify-between items-center gap-2">
+                  <div className="flex gap-1">
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className={cn("h-8 w-8", selectedAchievement ? "text-accent bg-accent/10" : "hover:text-accent hover:bg-accent/10")}
+                      className={cn("h-7 w-7 sm:h-8 sm:w-8", selectedAchievement ? "text-accent bg-accent/10" : "hover:text-accent hover:bg-accent/10")}
                       onClick={() => setIsAchievementPickerOpen(true)}
                     >
-                      <Trophy className="h-4 w-4" />
+                      <Trophy className="h-3 w-3 sm:h-4 sm:w-4" />
                     </Button>
                   </div>
-                  <Button size="sm" onClick={handlePost} className="bg-accent hover:bg-accent/90 text-white">
-                    <Send className="h-3 w-3 mr-2" /> Posting
+                  <Button size="sm" onClick={handlePost} className="bg-accent hover:bg-accent/90 text-white text-xs sm:text-sm px-2 sm:px-4 h-7 sm:h-9">
+                    <Send className="h-2.5 w-2.5 sm:h-3 sm:w-3 mr-1 sm:mr-2" /> <span className="hidden sm:inline">Posting</span><span className="sm:hidden">Post</span>
                   </Button>
                 </div>
               </div>
