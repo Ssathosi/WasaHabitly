@@ -85,9 +85,9 @@ export default function CalendarPage() {
         </Tabs>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Calendar */}
-        <Card className="lg:col-span-2 bg-card/30 border-white/5 backdrop-blur-sm">
+        <Card className="lg:col-span-3 bg-card/30 border-white/5 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-base">Kalender Kebiasaan</CardTitle>
           </CardHeader>
