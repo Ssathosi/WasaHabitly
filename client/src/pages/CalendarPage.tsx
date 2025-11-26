@@ -99,11 +99,18 @@ export default function CalendarPage() {
               }
               @media (min-width: 1024px) {
                 .rdp {
-                  --rdp-cell-size: 65px;
+                  --rdp-cell-size: 75px;
                 }
               }
               .rdp-months {
                 width: 100%;
+              }
+              .rdp-caption {
+                padding: 0 1rem;
+              }
+              .rdp-nav {
+                justify-content: space-between;
+                padding: 0 1rem;
               }
               .rdp-head_cell {
                 color: #a1a1a1;
