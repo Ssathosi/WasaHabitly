@@ -90,7 +90,7 @@ export function LandingHero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
             <Button 
               size="sm"
-              className="w-full sm:w-auto text-xs sm:text-base md:text-lg px-3 sm:px-6 md:px-8 py-2 sm:py-3 md:py-6 rounded-full bg-accent hover:bg-accent/90 text-white shadow-[0_0_20px_-5px_rgba(26,188,156,0.5)] transition-all hover:scale-105 cursor-pointer"
+              className="text-xs sm:text-base md:text-lg px-3 sm:px-6 md:px-8 py-2 sm:py-3 md:py-6 rounded-full bg-accent hover:bg-accent/90 text-white shadow-[0_0_20px_-5px_rgba(26,188,156,0.5)] transition-all hover:scale-105 cursor-pointer"
               onClick={() => setLocation("/dashboard")}
             >
               Mulai Sekarang <ArrowRight className="ml-1 sm:ml-2 h-3 sm:h-4 md:h-5 w-3 sm:w-4 md:w-5" />
@@ -98,7 +98,7 @@ export function LandingHero() {
             <Button 
               variant="outline" 
               size="sm"
-              className="w-full sm:w-auto text-xs sm:text-base md:text-lg px-3 sm:px-6 md:px-8 py-2 sm:py-3 md:py-6 rounded-full border-white/10 bg-white/5 hover:bg-white/10 text-foreground backdrop-blur-sm cursor-pointer"
+              className="text-xs sm:text-base md:text-lg px-3 sm:px-6 md:px-8 py-2 sm:py-3 md:py-6 rounded-full border-white/10 bg-white/5 hover:bg-white/10 text-foreground backdrop-blur-sm cursor-pointer"
             >
               Pelajari Lebih Lanjut
             </Button>
