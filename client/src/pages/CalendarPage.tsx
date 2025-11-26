@@ -94,8 +94,13 @@ export default function CalendarPage() {
           <CardContent>
             <style>{`
               .rdp {
-                --rdp-cell-size: 50px;
+                --rdp-cell-size: 45px;
                 --rdp-accent-color: rgb(26, 188, 156);
+              }
+              @media (min-width: 1024px) {
+                .rdp {
+                  --rdp-cell-size: 65px;
+                }
               }
               .rdp-months {
                 width: 100%;
