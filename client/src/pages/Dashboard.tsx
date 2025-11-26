@@ -104,7 +104,7 @@ export default function Dashboard() {
 
           {/* Main Content */}
           <main className="flex-1 overflow-auto p-6 scroll-smooth">
-             <div className="max-w-6xl mx-auto">
+             <div className="w-full mx-auto">
                 <Switch>
                   <Route path="/dashboard" component={HabitsPage} />
                   <Route path="/dashboard/analytics" component={AnalyticsPage} />
