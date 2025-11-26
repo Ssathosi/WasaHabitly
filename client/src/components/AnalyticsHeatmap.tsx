@@ -29,9 +29,9 @@ export function AnalyticsHeatmap() {
 
   return (
     <div className="space-y-6">
-      <div className="p-6 rounded-2xl border border-white/5 bg-card/30 backdrop-blur-sm">
-        <h3 className="text-lg font-semibold mb-4">Aktivitas Habit</h3>
-        <div className="h-[200px] w-full">
+      <div className="p-3 sm:p-6 rounded-2xl border border-white/5 bg-card/30 backdrop-blur-sm">
+        <h3 className="text-base sm:text-lg font-semibold mb-4">Aktivitas Habit</h3>
+        <div className="h-[200px] w-full -mx-3 sm:mx-0">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data}>
               <defs>
@@ -53,8 +53,8 @@ export function AnalyticsHeatmap() {
         </div>
       </div>
 
-      <div className="p-6 rounded-2xl border border-white/5 bg-card/30 backdrop-blur-sm overflow-x-auto">
-        <h3 className="text-lg font-semibold mb-4">Konsistensi (Heatmap)</h3>
+      <div className="p-3 sm:p-6 rounded-2xl border border-white/5 bg-card/30 backdrop-blur-sm overflow-x-auto">
+        <h3 className="text-base sm:text-lg font-semibold mb-4">Konsistensi (Heatmap)</h3>
         <div className="flex gap-1 min-w-max">
            {/* Days Labels */}
            <div className="flex flex-col gap-1 mr-2 text-xs text-muted-foreground py-1 justify-between">
