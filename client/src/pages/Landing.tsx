@@ -45,9 +45,9 @@ export default function Landing() {
             <a href="#testimonials" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Landing page 2</a>
             <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Landing Page 3</a>
           </nav>
-          <div className="flex items-center gap-2 sm:gap-4">
-            <Button variant="ghost" className="hidden sm:flex text-xs sm:text-sm" onClick={() => setLocation("/login")}>Masuk</Button>
-            <Button onClick={() => setLocation("/dashboard")} className="bg-white/10 hover:bg-white/20 text-white border border-white/10 text-xs sm:text-sm px-3 sm:px-4">Daftar</Button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Button variant="ghost" className="text-xs sm:text-sm px-3 sm:px-4 rounded-lg h-8 sm:h-10" onClick={() => setLocation("/login")}>Masuk</Button>
+            <Button onClick={() => setLocation("/login")} className="bg-accent hover:bg-accent/90 text-white rounded-lg text-xs sm:text-sm px-3 sm:px-4 h-8 sm:h-10">Daftar</Button>
           </div>
         </div>
       </header>
