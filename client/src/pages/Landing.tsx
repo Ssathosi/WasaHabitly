@@ -38,12 +38,12 @@ export default function Landing() {
           <div className="flex items-center gap-2 font-bold text-lg sm:text-xl">
             <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-accent to-teal-600 flex items-center justify-center text-white text-sm sm:text-base">W</div>
             <span className="hidden xs:inline">WasaHabitly</span>
-            <span className="inline xs:hidden">Wasa</span>
+            <span className="inline xs:hidden"><span className="text-accent">Wasa</span>Habitly</span>
           </div>
           <nav className="hidden lg:flex items-center gap-8">
             <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Fitur</a>
-            <a href="#testimonials" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Testimoni</a>
-            <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Harga</a>
+            <a href="#testimonials" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Landing page 2</a>
+            <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Landing Page 3</a>
           </nav>
           <div className="flex items-center gap-2 sm:gap-4">
             <Button variant="ghost" className="hidden sm:flex text-xs sm:text-sm" onClick={() => setLocation("/login")}>Masuk</Button>
@@ -91,7 +91,7 @@ export default function Landing() {
         {/* Footer */}
         <footer className="py-8 sm:py-12 border-t border-white/5 bg-background">
           <div className="container mx-auto px-4 sm:px-6 text-center text-xs sm:text-sm text-muted-foreground">
-            <p>&copy; 2025 WasaHabitly. Dibuat dengan ❤️ di Indonesia.</p>
+            <p>&copy; 2025 WasaHabitly. Dibuat oleh <span className="text-white">Wasasi Org's</span> </p>
           </div>
         </footer>
       </main>

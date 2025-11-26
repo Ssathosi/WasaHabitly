@@ -67,29 +67,31 @@ const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
 export function AchievementPicker({ open, onOpenChange, onSelect }: AchievementPickerProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-card/50 border-white/10 backdrop-blur-md max-w-md">
+      <DialogContent className="bg-card/50 border-white/10 backdrop-blur-md max-w-md max-h-[80vh] flex flex-col">
         <DialogHeader>
           <DialogTitle>Pilih Achievement</DialogTitle>
         </DialogHeader>
-        <div className="grid grid-cols-2 gap-3">
-          {AVAILABLE_ACHIEVEMENTS.map((achievement, idx) => (
-            <motion.div
-              key={achievement.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: idx * 0.05 }}
-              onClick={() => {
-                onSelect?.(achievement);
-                onOpenChange(false);
-              }}
-              className="p-3 rounded-lg bg-white/5 border border-white/10 hover:border-accent/50 hover:bg-accent/10 cursor-pointer transition-all"
-            >
-              <div className={`flex items-center justify-center mb-2 ${achievement.color}`}>
-                {achievement.icon}
-              </div>
-              <p className="text-xs font-medium text-center text-foreground">{achievement.title}</p>
-            </motion.div>
-          ))}
+        <div className="overflow-y-auto flex-1 pr-4">
+          <div className="grid grid-cols-2 gap-3">
+            {AVAILABLE_ACHIEVEMENTS.map((achievement, idx) => (
+              <motion.div
+                key={achievement.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: idx * 0.05 }}
+                onClick={() => {
+                  onSelect?.(achievement);
+                  onOpenChange(false);
+                }}
+                className="p-3 rounded-lg bg-white/5 border border-white/10 hover:border-accent/50 hover:bg-accent/10 cursor-pointer transition-all"
+              >
+                <div className={`flex items-center justify-center mb-2 ${achievement.color}`}>
+                  {achievement.icon}
+                </div>
+                <p className="text-xs font-medium text-center text-foreground">{achievement.title}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </DialogContent>
     </Dialog>
