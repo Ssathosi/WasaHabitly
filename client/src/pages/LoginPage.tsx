@@ -69,7 +69,7 @@ export default function LoginPage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleSocialAuth}
-                  className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 text-sm font-medium group"
+                  className="p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 text-sm font-medium group"
                 >
                   <Chrome className="h-5 w-5 group-hover:text-blue-400 transition-colors" />
                 </motion.button>
@@ -77,7 +77,7 @@ export default function LoginPage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleSocialAuth}
-                  className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 text-sm font-medium group"
+                  className="p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 text-sm font-medium group"
                 >
                   <Facebook className="h-5 w-5 group-hover:text-blue-500 transition-colors" />
                 </motion.button>
@@ -85,7 +85,7 @@ export default function LoginPage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleSocialAuth}
-                  className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 text-sm font-medium"
+                  className="p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 text-sm font-medium"
                 >
                   <Apple className="h-5 w-5" />
                 </motion.button>
@@ -165,7 +165,7 @@ export default function LoginPage() {
               whileTap={{ scale: 0.98 }}
               onClick={handleEmailAuth}
               disabled={!email || !password || (isSignup && !name)}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-accent to-teal-500 hover:from-accent/90 hover:to-teal-600 text-white font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group shadow-lg shadow-accent/20"
+              className="w-full py-3 rounded-lg bg-gradient-to-r from-accent to-teal-500 hover:from-accent/90 hover:to-teal-600 text-white font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group shadow-lg shadow-accent/20"
             >
               {isSignup ? "Buat Akun" : "Masuk"}
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />

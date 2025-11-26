@@ -41,7 +41,7 @@ export default function HabitsPage() {
           <h2 className="text-2xl font-bold mb-1">Hari Ini</h2>
           <p className="text-muted-foreground text-sm">Selasa, 25 November 2025</p>
         </div>
-        <Button onClick={() => setIsModalOpen(true)} className="bg-accent hover:bg-accent/90 text-white shadow-lg shadow-accent/20">
+        <Button onClick={() => setIsModalOpen(true)} className="rounded-lg bg-accent hover:bg-accent/90 text-white shadow-lg shadow-accent/20">
           <Plus className="h-4 w-4 mr-2" /> Tambah Habit
         </Button>
       </div>
