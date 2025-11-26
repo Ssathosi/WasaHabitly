@@ -87,10 +87,11 @@ export function LandingHero() {
             WasaHabitly membantu Anda melacak progres, membangun disiplin, dan mencapai tujuan hidup dengan analitik mendalam dan antarmuka yang indah.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+            {/* Desktop buttons */}
             <Button 
               size="sm"
-              className="text-sm sm:text-base md:text-lg px-6 sm:px-7 md:px-8 py-2.5 sm:py-3 md:py-6 rounded-lg bg-accent hover:bg-accent/90 text-white shadow-[0_0_20px_-5px_rgba(26,188,156,0.5)] transition-all hover:scale-105 cursor-pointer"
+              className="hidden sm:flex text-sm sm:text-base md:text-lg px-6 sm:px-7 md:px-8 py-2.5 sm:py-3 md:py-6 rounded-lg bg-accent hover:bg-accent/90 text-white shadow-[0_0_20px_-5px_rgba(26,188,156,0.5)] transition-all hover:scale-105 cursor-pointer"
               onClick={() => setLocation("/dashboard")}
             >
               Mulai Sekarang <ArrowRight className="ml-2 h-4 sm:h-4 md:h-5 w-4 sm:w-4 md:w-5" />
@@ -102,13 +103,21 @@ export function LandingHero() {
             >
               Pelajari Lebih Lanjut
             </Button>
+            
+            {/* Mobile buttons */}
             <Button 
-              variant="outline" 
               size="sm"
-              className="sm:hidden text-sm px-6 py-2.5 rounded-lg border-white/10 bg-white/5 hover:bg-white/10 text-foreground backdrop-blur-sm cursor-pointer"
+              className="sm:hidden flex-1 text-xs px-4 py-2 rounded-lg bg-accent hover:bg-accent/90 text-white shadow-lg shadow-accent/20 cursor-pointer"
               onClick={() => setLocation("/login")}
             >
               Masuk
+            </Button>
+            <Button 
+              size="sm"
+              className="sm:hidden flex-1 text-xs px-4 py-2 rounded-lg border-white/10 bg-white/5 hover:bg-white/10 text-foreground backdrop-blur-sm cursor-pointer"
+              onClick={() => setLocation("/login")}
+            >
+              Daftar
             </Button>
           </div>
         </motion.div>
