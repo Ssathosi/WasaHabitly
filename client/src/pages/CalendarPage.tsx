@@ -67,35 +67,28 @@ export default function CalendarPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-bold mb-1 flex items-center gap-2">
-            <Calendar className="h-6 w-6 text-accent" />
-            {format(selectedDate, "MMMM yyyy", { locale: id })}
-          </h2>
-          <p className="text-muted-foreground text-sm">Lacak kebiasaanmu setiap hari</p>
-        </div>
 
-        <Tabs defaultValue="month" onValueChange={(v) => setView(v as "month" | "week")}>
-          <TabsList className="bg-white/5 border border-white/10">
-            <TabsTrigger value="month">Bulan</TabsTrigger>
-            <TabsTrigger value="week">Minggu</TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6">
         {/* Calendar */}
-        <Card className="lg:col-span-3 bg-gradient-to-br from-card/40 to-card/20 border border-white/10 backdrop-blur-xl shadow-2xl shadow-accent/5">
-          <CardHeader className="border-b border-white/5 pb-4">
-            <CardTitle className="text-lg sm:text-xl font-bold bg-gradient-to-r from-accent to-teal-400 bg-clip-text text-transparent">📅 Kalender Kebiasaan</CardTitle>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1">Visualisasi konsistensi harianmu</p>
+        <Card className="w-full bg-gradient-to-br from-card/50 to-card/30 border border-white/10 backdrop-blur-xl shadow-2xl shadow-accent/10">
+          <CardHeader className="border-b border-white/5 pb-3 sm:pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <CardTitle className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-accent to-teal-400 bg-clip-text text-transparent">📅 Kalender Kebiasaan</CardTitle>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-2">Lacak konsistensi harianmu sepanjang bulan</p>
+              </div>
+              <Tabs defaultValue="month" onValueChange={(v) => setView(v as "month" | "week")} className="w-full sm:w-auto">
+                <TabsList className="bg-white/5 border border-white/10 w-full sm:w-auto">
+                  <TabsTrigger value="month" className="text-xs sm:text-sm">Bulan</TabsTrigger>
+                  <TabsTrigger value="week" className="text-xs sm:text-sm">Minggu</TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
           </CardHeader>
-          <CardContent className="p-4 sm:p-8">
+          <CardContent className="p-4 sm:p-10">
             <style>{`
               .rdp-root {
-                --rdp-cell-size: 38px;
+                --rdp-cell-size: 36px;
                 --rdp-accent-color: rgb(26, 188, 156);
               }
               @media (min-width: 640px) {
@@ -105,11 +98,11 @@ export default function CalendarPage() {
               }
               @media (min-width: 1024px) {
                 .rdp-root {
-                  --rdp-cell-size: 56px;
+                  --rdp-cell-size: 60px;
                 }
               }
               .rdp {
-                --rdp-cell-size: 38px;
+                --rdp-cell-size: 36px;
                 --rdp-accent-color: rgb(26, 188, 156);
                 padding: 0;
                 font-family: 'Inter', 'SF Pro Display', sans-serif;
@@ -121,7 +114,7 @@ export default function CalendarPage() {
               }
               @media (min-width: 1024px) {
                 .rdp {
-                  --rdp-cell-size: 56px;
+                  --rdp-cell-size: 60px;
                 }
               }
               .rdp-months {
@@ -136,24 +129,25 @@ export default function CalendarPage() {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding: 0 0 1.5rem 0;
+                padding: 1rem 0 2rem 0;
                 margin: 0;
-                font-size: 1rem;
-                font-weight: 600;
-                color: #ecf0f1;
               }
               .rdp-caption_label {
-                font-size: 0.95rem;
+                font-size: 1.1rem;
+                sm:font-size: 1.25rem;
                 font-weight: 700;
+                color: #ecf0f1;
               }
               .rdp-nav {
                 position: absolute;
                 left: 0;
+                right: 0;
                 top: 0;
                 z-index: 10;
                 display: flex;
                 width: 100%;
                 justify-content: space-between;
+                padding: 0 0.5rem;
               }
               .rdp-button_previous,
               .rdp-button_next {
@@ -162,83 +156,89 @@ export default function CalendarPage() {
                 padding: 0;
                 background: rgba(255,255,255,0.05);
                 border: 1px solid rgba(255,255,255,0.1);
-                border-radius: 0.5rem;
+                border-radius: 0.6rem;
                 color: #a1a1a1;
                 cursor: pointer;
                 transition: all 0.2s ease;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-weight: bold;
               }
               .rdp-button_previous:hover,
               .rdp-button_next:hover {
-                background: rgba(26, 188, 156, 0.15);
-                border-color: rgba(26, 188, 156, 0.3);
+                background: rgba(26, 188, 156, 0.2);
+                border-color: rgba(26, 188, 156, 0.4);
                 color: #1ABC9C;
               }
               .rdp-head {
-                display: contents;
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 0.5rem;
+                margin-bottom: 0.75rem;
               }
               .rdp-head_cell {
                 color: #64b5f6;
-                font-size: 0.65rem;
-                sm:font-size: 0.75rem;
+                font-size: 0.7rem;
+                sm:font-size: 0.8rem;
                 font-weight: 700;
                 text-transform: uppercase;
-                letter-spacing: 0.05em;
-                padding: 0.5rem 0.25rem 0.75rem 0.25rem;
-                font-weight: 600;
+                letter-spacing: 0.08em;
+                padding: 0.75rem 0.25rem;
+                text-align: center;
               }
               .rdp-weeks {
-                display: contents;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
               }
               .rdp-week {
                 display: grid;
                 grid-template-columns: repeat(7, 1fr);
-                gap: 0.35rem;
-                margin-bottom: 0.35rem;
+                gap: 0.5rem;
               }
               .rdp-cell {
                 padding: 0;
                 text-align: center;
               }
               .rdp-day {
-                border-radius: 0.6rem;
+                border-radius: 0.7rem;
                 color: #ecf0f1;
-                font-weight: 500;
+                font-weight: 600;
                 background: rgba(255,255,255,0.03);
                 border: 1px solid rgba(255,255,255,0.08);
-                font-size: 0.7rem;
-                sm:font-size: 0.8rem;
-                transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-                padding: 0.3rem;
+                font-size: 0.75rem;
+                sm:font-size: 0.9rem;
+                transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                padding: 0.4rem;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                min-height: 100%;
+                aspect-ratio: 1;
               }
               .rdp-day:hover:not([disabled]) {
-                background: rgba(26, 188, 156, 0.2);
-                border-color: rgba(26, 188, 156, 0.4);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(26, 188, 156, 0.15);
+                background: rgba(26, 188, 156, 0.25);
+                border-color: rgba(26, 188, 156, 0.5);
+                transform: translateY(-3px);
+                box-shadow: 0 6px 16px rgba(26, 188, 156, 0.2);
               }
               .rdp-day_selected:not([disabled]) {
                 background: linear-gradient(135deg, rgb(26, 188, 156) 0%, rgb(0, 195, 154) 100%);
                 color: white;
                 font-weight: 700;
-                border: 1px solid rgba(26, 188, 156, 0.5);
-                box-shadow: 0 0 20px rgba(26, 188, 156, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+                border: 1px solid rgba(26, 188, 156, 0.6);
+                box-shadow: 0 0 24px rgba(26, 188, 156, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
               }
               .rdp-day_disabled {
                 color: #4b5563;
-                opacity: 0.4;
+                opacity: 0.35;
                 background: transparent;
                 border-color: transparent;
+                cursor: not-allowed;
               }
               .rdp-day_outside {
                 color: #3f4754;
-                opacity: 0.5;
+                opacity: 0.4;
               }
             `}</style>
             <DayPicker
@@ -252,7 +252,7 @@ export default function CalendarPage() {
         </Card>
 
         {/* Details */}
-        <Card className="bg-card/30 border-white/5 backdrop-blur-sm h-fit">
+        <Card className="w-full lg:w-auto bg-gradient-to-br from-card/50 to-card/30 border border-white/10 backdrop-blur-xl shadow-2xl shadow-accent/10 h-fit">
           <CardHeader>
             <CardTitle className="text-sm font-medium text-muted-foreground flex items-center justify-between">
               <span>Detail Hari</span>
