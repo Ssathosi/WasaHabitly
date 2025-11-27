@@ -91,41 +91,69 @@ export default function CalendarPage() {
           <CardHeader>
             <CardTitle className="text-base">Kalender Kebiasaan</CardTitle>
           </CardHeader>
-          <CardContent className="p-0">
+          <CardContent className="p-3 sm:p-6">
             <style>{`
               .rdp {
-                --rdp-cell-size: 45px;
+                --rdp-cell-size: 40px;
                 --rdp-accent-color: rgb(26, 188, 156);
+                padding: 0;
+              }
+              @media (min-width: 640px) {
+                .rdp {
+                  --rdp-cell-size: 50px;
+                }
               }
               @media (min-width: 1024px) {
                 .rdp {
-                  --rdp-cell-size: 75px;
+                  --rdp-cell-size: 70px;
                 }
               }
               .rdp-months {
                 width: 100%;
               }
+              .rdp-month {
+                width: 100%;
+              }
               .rdp-caption {
-                padding: 1rem;
+                padding: 0.5rem 0 1rem 0;
+                text-align: center;
               }
               .rdp-nav {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                display: flex;
                 justify-content: space-between;
-                padding: 0 1rem;
+                padding: 0 0.5rem;
+              }
+              .rdp-button_previous,
+              .rdp-button_next {
+                height: 2rem;
+                width: 2rem;
               }
               .rdp-head_cell {
                 color: #a1a1a1;
-                font-size: 0.875rem;
+                font-size: 0.75rem;
+                sm:font-size: 0.875rem;
                 font-weight: 600;
                 text-transform: uppercase;
+                padding: 0.25rem;
               }
               .rdp-cell {
-                padding: 0.25rem;
+                padding: 0.1rem;
               }
               .rdp-day {
                 border-radius: 0.5rem;
                 color: #ecf0f1;
                 font-weight: 500;
                 background: transparent;
+                font-size: 0.75rem;
+              }
+              @media (min-width: 640px) {
+                .rdp-day {
+                  font-size: 0.875rem;
+                }
               }
               .rdp-day:hover:not([disabled]) {
                 background-color: rgba(255,255,255,0.1);
