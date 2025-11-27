@@ -91,7 +91,7 @@ export default function CalendarPage() {
           <CardHeader>
             <CardTitle className="text-base">Kalender Kebiasaan</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-0">
             <style>{`
               .rdp {
                 --rdp-cell-size: 45px;
@@ -106,7 +106,7 @@ export default function CalendarPage() {
                 width: 100%;
               }
               .rdp-caption {
-                padding: 0 1rem;
+                padding: 1rem;
               }
               .rdp-nav {
                 justify-content: space-between;
