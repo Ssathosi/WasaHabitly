@@ -85,8 +85,8 @@ export default function CalendarPage() {
               </Tabs>
             </div>
           </CardHeader>
-          <CardContent className="p-4 sm:p-10 flex justify-center">
-            <div className="w-full max-w-4xl">
+          <CardContent className="p-4 sm:p-10 flex justify-center w-full">
+            <div className="w-full max-w-6xl">
             <style>{`
               .rdp-root {
                 --rdp-cell-size: 36px;
