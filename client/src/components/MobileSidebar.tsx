@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { 
@@ -7,11 +8,11 @@ import {
   Users, 
   Timer, 
   Trophy, 
-  Settings,
-  LogOut
+  Settings
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { SettingsModal } from "./SettingsModal";
 
 const NAV_ITEMS = [
   { label: "Habits", icon: LayoutDashboard, href: "/dashboard" },
@@ -28,6 +29,7 @@ interface MobileSidebarProps {
 
 export function MobileSidebar({ onNavigate }: MobileSidebarProps) {
   const [location] = useLocation();
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   return (
     <div className="w-64 h-screen flex flex-col border-r border-white/5 bg-sidebar text-sidebar-foreground">
@@ -72,13 +74,17 @@ export function MobileSidebar({ onNavigate }: MobileSidebarProps) {
           </div>
         </div>
         <div className="flex gap-1">
-           <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
+           <Button 
+             variant="ghost" 
+             size="icon" 
+             onClick={() => setSettingsOpen(true)}
+             className="h-8 w-8 text-muted-foreground hover:text-foreground hover:bg-accent/10 transition-colors"
+             data-testid="button-settings-mobile"
+           >
              <Settings className="h-4 w-4" />
            </Button>
-           <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10">
-             <LogOut className="h-4 w-4" />
-           </Button>
         </div>
+        <SettingsModal open={settingsOpen} onOpenChange={setSettingsOpen} />
       </div>
     </div>
   );
