@@ -85,7 +85,8 @@ export default function CalendarPage() {
               </Tabs>
             </div>
           </CardHeader>
-          <CardContent className="p-4 sm:p-10">
+          <CardContent className="p-4 sm:p-10 flex justify-center">
+            <div className="w-full max-w-4xl">
             <style>{`
               .rdp-root {
                 --rdp-cell-size: 36px;
@@ -93,12 +94,12 @@ export default function CalendarPage() {
               }
               @media (min-width: 640px) {
                 .rdp-root {
-                  --rdp-cell-size: 48px;
+                  --rdp-cell-size: 50px;
                 }
               }
               @media (min-width: 1024px) {
                 .rdp-root {
-                  --rdp-cell-size: 60px;
+                  --rdp-cell-size: 68px;
                 }
               }
               .rdp {
@@ -106,15 +107,16 @@ export default function CalendarPage() {
                 --rdp-accent-color: rgb(26, 188, 156);
                 padding: 0;
                 font-family: 'Inter', 'SF Pro Display', sans-serif;
+                width: 100%;
               }
               @media (min-width: 640px) {
                 .rdp {
-                  --rdp-cell-size: 48px;
+                  --rdp-cell-size: 50px;
                 }
               }
               @media (min-width: 1024px) {
                 .rdp {
-                  --rdp-cell-size: 60px;
+                  --rdp-cell-size: 68px;
                 }
               }
               .rdp-months {
@@ -129,12 +131,13 @@ export default function CalendarPage() {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding: 1rem 0 2rem 0;
+                padding: 1.5rem 0 2.5rem 0;
                 margin: 0;
               }
               .rdp-caption_label {
                 font-size: 1.1rem;
-                sm:font-size: 1.25rem;
+                sm:font-size: 1.3rem;
+                lg:font-size: 1.4rem;
                 font-weight: 700;
                 color: #ecf0f1;
               }
@@ -147,12 +150,12 @@ export default function CalendarPage() {
                 display: flex;
                 width: 100%;
                 justify-content: space-between;
-                padding: 0 0.5rem;
+                padding: 0 1rem;
               }
               .rdp-button_previous,
               .rdp-button_next {
-                height: 2.2rem;
-                width: 2.2rem;
+                height: 2.4rem;
+                width: 2.4rem;
                 padding: 0;
                 background: rgba(255,255,255,0.05);
                 border: 1px solid rgba(255,255,255,0.1);
@@ -174,28 +177,36 @@ export default function CalendarPage() {
               .rdp-head {
                 display: grid;
                 grid-template-columns: repeat(7, 1fr);
-                gap: 0.5rem;
-                margin-bottom: 0.75rem;
+                gap: 0.6rem;
+                sm:gap: 0.8rem;
+                lg:gap: 1rem;
+                margin-bottom: 1rem;
               }
               .rdp-head_cell {
                 color: #64b5f6;
                 font-size: 0.7rem;
-                sm:font-size: 0.8rem;
+                sm:font-size: 0.85rem;
+                lg:font-size: 0.95rem;
                 font-weight: 700;
                 text-transform: uppercase;
-                letter-spacing: 0.08em;
-                padding: 0.75rem 0.25rem;
+                letter-spacing: 0.1em;
+                padding: 0.75rem 0.5rem;
+                sm:padding: 1rem 0.5rem;
                 text-align: center;
               }
               .rdp-weeks {
                 display: flex;
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0.6rem;
+                sm:gap: 0.8rem;
+                lg:gap: 1rem;
               }
               .rdp-week {
                 display: grid;
                 grid-template-columns: repeat(7, 1fr);
-                gap: 0.5rem;
+                gap: 0.6rem;
+                sm:gap: 0.8rem;
+                lg:gap: 1rem;
               }
               .rdp-cell {
                 padding: 0;
@@ -208,9 +219,11 @@ export default function CalendarPage() {
                 background: rgba(255,255,255,0.03);
                 border: 1px solid rgba(255,255,255,0.08);
                 font-size: 0.75rem;
-                sm:font-size: 0.9rem;
+                sm:font-size: 0.95rem;
+                lg:font-size: 1rem;
                 transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
                 padding: 0.4rem;
+                sm:padding: 0.5rem;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -248,6 +261,7 @@ export default function CalendarPage() {
               disabled={disabledDays}
               showOutsideDays={false}
             />
+            </div>
           </CardContent>
         </Card>
 
